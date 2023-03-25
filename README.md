@@ -1,0 +1,3 @@
+# kryptocore.github.io
+
+bruh
