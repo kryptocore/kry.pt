@@ -1,1 +1,0 @@
-# kryptocore.github.io
