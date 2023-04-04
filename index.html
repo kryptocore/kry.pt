@@ -4,10 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-    <link rel="stylesheet" href="index.css" media="all" />
+    <title>Test CRT Screen</title>
+      <link rel="preload" href="crt.css" as="style">
+      <link rel="stylesheet" href="crt.css"> <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
+    <style>
+      
+      body {background: black; display: block;}
+      
+      .span   {min-height: 100vh; margin: 0; overflow: hidden;}
+      .flex         {display: flex;}                                    
+        .row        {flex-flow: row wrap;}
+        .column     {flex-flow: column wrap;}
+        .center     {justify-content: center; align-items: center;}
+        .desk       {flex-flow: row wrap; align-items: top;}
+      .fisheye  {filter: url('#fisheye');}
+        
+      #screen {position: absolute; width: 50vw; height: 50vh; background-color: #111111; z-index: 100;}
+      #custom-cursor  {position: absolute; z-index: 101; width: 100%; height: 100%; pointer-events: none;
+        top: 0;
+        left: 0;        
+      }
+        .line {position: absolute; background-color: red;}
+        .line-horizontal  {width: 100%; height: 2px;}
+        .line-vertical  {width: 2px; height: 100%;}
+
+      ::selection {color: #111111; background: red;}
+      .highlight  {color: #111111; background: red;}
+      
+    </style>
 </head>
-<body>
-    <p>The Krypt is migrating, please stand by...</p>
+<crt id="crt"></crt> 
+<body class="span">
+  <div class="flex center span fisheye">
+    <div id="screen" class="flex center">
+      <p style="color: red; font-size: 5em;">The Krypt<br>is migrating.</p>
+      <div id="custom-cursor">
+        <div class="line line-horizontal"></div>
+        <div class="line line-vertical"></div>
+      </div>
+    </div>
+  </div>  
 </body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="fisheye">
+      <feImage xlink:href="fisheye.png" result="lightMap" preserveAspectRatio="none"/>
+      <feDisplacementMap in2="lightMap" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" scale="120"/>
+    </filter>
+  </defs>
+</svg>
+
+<script>
+  const customCursor = document.getElementById("custom-cursor");
+  const confine = document.getElementById("screen");
+  const horizontalLine = customCursor.querySelector(".line-horizontal");
+  const verticalLine = customCursor.querySelector(".line-vertical");
+
+  confine.addEventListener("mousemove", (e) => {
+    const areaRect = confine.getBoundingClientRect();
+    const confinedX = e.clientX - areaRect.left + confine.clientLeft;
+    const confinedY = e.clientY - areaRect.top + confine.clientTop;
+
+    horizontalLine.style.top = confinedY + "px";
+    verticalLine.style.left = confinedX + "px";
+  });
+
+  confine.addEventListener("mouseenter", () => {
+    document.body.style.cursor = "none";
+    customCursor.style.display = "block";
+  });
+
+  confine.addEventListener("mouseleave", () => {
+    document.body.style.cursor = "none";
+    customCursor.style.display = "none";
+  });
+</script>
+
 </html>
