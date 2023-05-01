@@ -15,7 +15,7 @@
       <screen></screen>
       <div id="content" class="flex center">
         <div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>
-        <p class="hl" style="color: red; font-family: UVGA; padding: 2em; font-size: 1.1em;">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."<br><br>श्रीमद्भगवद्गीता XIV:X</p>
+        <p style="color: red; font-family: UVGA; padding: 2em; font-size: 1.1em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>
       </div>
   </wrapper>
 </body>
@@ -34,36 +34,24 @@
   
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
-    const nodes = element.childNodes;
+    const text = element.textContent;
     let newText = "";
   
-    // Add a span element around each letter, ignoring <br> elements
-    for (let j = 0; j < nodes.length; j++) {
-      const node = nodes[j];
-      if (node.nodeName === "#text") {
-        const text = node.textContent;
-        for (let k = 0; k < text.length; k++) {
-          newText += "<span>" + text[k] + "</span>";
-        }
-      } else if (node.nodeName === "BR") {
-        newText += "<br>";
-      } else {
-        newText += node.outerHTML;
-      }
+    // Add a span element around each letter
+    for (let j = 0; j < text.length; j++) {
+      newText += "<span>" + text[j] + "</span>";
     }
   
     // Replace the element content with the new text with span elements
     element.innerHTML = newText;
   
-    // Add event listeners to each span element to highlight it and its adjacent letters
-    const letters = element.querySelectorAll("span");
-    for (let j = 0; j < letters.length; j++) {
-      const letter = letters[j];
-      letter.addEventListener("mouseover", function() {
-        letter.style.backgroundColor = "red";
-        letter.style.color = "black";
-        const prevLetter = letter.previousElementSibling;
-        const nextLetter = letter.nextElementSibling;
+    // Add a single event listener to the parent element to handle all events (you absolute buffoon)
+    element.addEventListener("mouseover", function(event) {
+      if (event.target.tagName === "SPAN") {
+        event.target.style.backgroundColor = "red";
+        event.target.style.color = "black";
+        const prevLetter = event.target.previousElementSibling;
+        const nextLetter = event.target.nextElementSibling;
         if (prevLetter) {
           prevLetter.style.backgroundColor = "maroon";
           prevLetter.style.color = "inherit";
@@ -72,12 +60,14 @@
           nextLetter.style.backgroundColor = "maroon";
           nextLetter.style.color = "inherit";
         }
-      });
-      letter.addEventListener("mouseout", function() {
-        letter.style.backgroundColor = "inherit";
-        letter.style.color = "inherit";
-        const prevLetter = letter.previousElementSibling;
-        const nextLetter = letter.nextElementSibling;
+      }
+    });
+    element.addEventListener("mouseout", function(event) {
+      if (event.target.tagName === "SPAN") {
+        event.target.style.backgroundColor = "inherit";
+        event.target.style.color = "inherit";
+        const prevLetter = event.target.previousElementSibling;
+        const nextLetter = event.target.nextElementSibling;
         if (prevLetter) {
           prevLetter.style.backgroundColor = "inherit";
           prevLetter.style.color = "inherit";
@@ -86,12 +76,14 @@
           nextLetter.style.backgroundColor = "inherit";
           nextLetter.style.color = "inherit";
         }
-      });
-      letter.addEventListener("mousedown", function() {
-        letter.style.backgroundColor = "red";
-        letter.style.color = "black";
-        const prevLetter = letter.previousElementSibling;
-        const nextLetter = letter.nextElementSibling;
+      }
+    });
+    element.addEventListener("mousedown", function(event) {
+      if (event.target.tagName === "SPAN") {
+        event.target.style.backgroundColor = "red";
+        event.target.style.color = "black";
+        const prevLetter = event.target.previousElementSibling;
+        const nextLetter = event.target.nextElementSibling;
         if (prevLetter) {
           prevLetter.style.backgroundColor = "maroon";
           prevLetter.style.color = "inherit";
@@ -100,35 +92,44 @@
           nextLetter.style.backgroundColor = "maroon";
           nextLetter.style.color = "inherit";
         }
-      });
-    }
+      }
+    });
   }
+
 </script>
 
 <script>
-    const customCursor = document.getElementById("custom-cursor");
-    const confine = document.getElementById("content");
-    const horizontalLine = customCursor.querySelector(".line-horizontal");
-    const verticalLine = customCursor.querySelector(".line-vertical");
+  const customCursor = document.getElementById("custom-cursor");
+  const confine = document.getElementById("content");
+  const horizontalLine = customCursor.querySelector(".line-horizontal");
+  const verticalLine = customCursor.querySelector(".line-vertical");
 
-    confine.addEventListener("mousemove", (e) => {
+  let latestMouseMove;
+
+  function updateCustomCursor() {
     const areaRect = confine.getBoundingClientRect();
-    const confinedX = e.clientX - areaRect.left + confine.clientLeft;
-    const confinedY = e.clientY - areaRect.top + confine.clientTop;
+    const confinedX = latestMouseMove.clientX - areaRect.left + confine.clientLeft;
+    const confinedY = latestMouseMove.clientY - areaRect.top + confine.clientTop;
 
     horizontalLine.style.top = confinedY + "px";
     verticalLine.style.left = confinedX + "px";
-    }, { passive: true });
+  }
 
-    confine.addEventListener("mouseenter", () => {
+  confine.addEventListener("mousemove", (e) => {
+    latestMouseMove = e;
+    requestAnimationFrame(updateCustomCursor);
+  });
+
+  confine.addEventListener("mouseenter", () => {
     document.body.style.cursor = "none";
     customCursor.style.display = "block";
-    });
+  });
 
-    confine.addEventListener("mouseleave", () => {
+  confine.addEventListener("mouseleave", () => {
     document.body.style.cursor = "none";
     customCursor.style.display = "none";
-    });
+  });
 </script>
+
 
 </html>
