@@ -60,8 +60,8 @@
     for (let j = 0; j < letters.length; j++) {
       const letter = letters[j];
       letter.addEventListener("mouseover", function() {
-        letter.style.backgroundColor = "black";
-        letter.style.color = "red";
+        letter.style.backgroundColor = "red";
+        letter.style.color = "black";
         const prevLetter = letter.previousElementSibling;
         const nextLetter = letter.nextElementSibling;
         if (prevLetter) {
