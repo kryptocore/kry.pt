@@ -34,12 +34,22 @@
   
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
-    const text = element.textContent;
+    const nodes = element.childNodes;
     let newText = "";
   
-    // Add a span element around each letter
-    for (let j = 0; j < text.length; j++) {
-      newText += "<span>" + text[j] + "</span>";
+    // Add a span element around each letter, ignoring <br> elements
+    for (let j = 0; j < nodes.length; j++) {
+      const node = nodes[j];
+      if (node.nodeName === "#text") {
+        const text = node.textContent;
+        for (let k = 0; k < text.length; k++) {
+          newText += "<span>" + text[k] + "</span>";
+        }
+      } else if (node.nodeName === "BR") {
+        newText += "<br>";
+      } else {
+        newText += node.outerHTML;
+      }
     }
   
     // Replace the element content with the new text with span elements
@@ -50,8 +60,8 @@
     for (let j = 0; j < letters.length; j++) {
       const letter = letters[j];
       letter.addEventListener("mouseover", function() {
-        letter.style.backgroundColor = "red";
-        letter.style.color = "black";
+        letter.style.backgroundColor = "maroon";
+        letter.style.color = "inherit";
         const prevLetter = letter.previousElementSibling;
         const nextLetter = letter.nextElementSibling;
         if (prevLetter) {
