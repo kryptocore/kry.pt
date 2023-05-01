@@ -118,7 +118,7 @@
 
     horizontalLine.style.top = confinedY + "px";
     verticalLine.style.left = confinedX + "px";
-    });
+    }, { passive: true });
 
     confine.addEventListener("mouseenter", () => {
     document.body.style.cursor = "none";
