@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +10,32 @@
         <link rel="stylesheet" href="CRT/crt.css">       <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
         <link rel="stylesheet" href="index.css">       
 </head>
-<crt></crt> 
+<tint><crt></crt></tint>
 <body>
   <wrapper>
       <screen></screen>
       <div id="content" class="flex center">
         <div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>
-        <p style="color: red; font-family: UVGA; padding: 2em; font-size: 1.1em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>
+        <div id="BBS">
+          <div id="fTelnetContainer"></div>
+          <script src="ftelnet.norip.noxfer.min.js" id="fTelnetScript"></script>
+          <script>
+              var Options = new fTelnetOptions();
+              Options.Hostname = "bbs.ftelnet.ca";
+              Options.Port = 1123;
+            
+              var Client = new fTelnetClient('fTelnetContainer', Options);
+          </script>
+        </div>
+        <!-- <p style="padding: 2em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p> -->
       </div>
   </wrapper>
 </body>
 
 <!--  
-      A relic from a bygone idea. A cool fisheye filter that I'm hella proud of. 
-      Unfortunately, if your computer was made pre-pandemic, your poor browser can't render it without your fans sounding like a jet engine. 
-      Somehow, this is Tigo's fault.
+  A relic from a bygone idea. A cool fisheye filter that I'm hella proud of. 
+  Unfortunately, if your computer was made pre-pandemic, your poor browser can't render it without your fans sounding like a jet engine. 
+  Somehow, this is Tigo's fault.
 -->
 <!--<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
   <defs>
@@ -104,36 +116,39 @@
 </script>
 
 <script>
-  const customCursor = document.getElementById("custom-cursor");
-  const confine = document.getElementById("content");
-  const horizontalLine = customCursor.querySelector(".line-horizontal");
-  const verticalLine = customCursor.querySelector(".line-vertical");
+const customCursor = document.getElementById("custom-cursor");
+const confine = document.getElementById("content");
+const horizontalLine = customCursor.querySelector(".line-horizontal");
+const verticalLine = customCursor.querySelector(".line-vertical");
 
-  let latestMouseMove;
+let latestMouseMove;
 
-  function updateCustomCursor() {
-    const areaRect = confine.getBoundingClientRect();
-    const confinedX = latestMouseMove.clientX - areaRect.left + confine.clientLeft;
-    const confinedY = latestMouseMove.clientY - areaRect.top + confine.clientTop;
+function updateCustomCursor() {
+  const areaRect = confine.getBoundingClientRect();
+  const viewportOffsetLeft = window.pageXOffset;
+  const viewportOffsetTop = window.pageYOffset;
+  const confinedX = latestMouseMove.clientX - areaRect.left + viewportOffsetLeft;
+  const confinedY = latestMouseMove.clientY - areaRect.top + viewportOffsetTop;
 
-    horizontalLine.style.top = confinedY + "px";
-    verticalLine.style.left = confinedX + "px";
-  }
+  horizontalLine.style.top = confinedY + "px";
+  verticalLine.style.left = confinedX + "px";
+}
 
-  confine.addEventListener("mousemove", (e) => {
-    latestMouseMove = e;
-    requestAnimationFrame(updateCustomCursor);
-  });
+confine.addEventListener("mousemove", (e) => {
+  latestMouseMove = e;
+  requestAnimationFrame(updateCustomCursor);
+});
 
-  confine.addEventListener("mouseenter", () => {
-    document.body.style.cursor = "none";
-    customCursor.style.display = "block";
-  });
+confine.addEventListener("mouseenter", () => {
+  document.body.style.cursor = "none";
+  customCursor.style.display = "block";
+});
 
-  confine.addEventListener("mouseleave", () => {
-    document.body.style.cursor = "none";
-    customCursor.style.display = "none";
-  });
+confine.addEventListener("mouseleave", () => {
+  document.body.style.cursor = "crosshair";
+  customCursor.style.display = "none";
+});
+
 </script>
 
 

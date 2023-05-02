@@ -1,13 +1,23 @@
+/* [ Fonts ] */
+
 @font-face {font-family: 'Jackeyfont'; src: url('WOFF/jackeyfont.woff');}                      .J      {font-family: 'Jackeyfont';}
 @font-face {font-family: 'UVGA'; src: url('WOFF/UVGA16.woff');}                                .UVGA   {font-family: 'UVGA';}
+
+/* [ Palette ] */
+
+  :root   { --screenBlack:  #000000;
+            --offWhite:     #f3f3f3;
+
+            --tint:         #ff0000;
+          }
 
 /* [ Element Formatting ] */
 
 body      { display: block; box-sizing: border-box; 
-            background: black;
+            background: var(--screenBlack); color: var(--offWhite); cursor: crosshair;
             min-height: 100vh; margin: 0; overflow: hidden;
 
-              image-rendering: crisp-edges;
+              image-rendering: crisp-edges;               /* ??? */
               -ms-interpolation-mode: nearest-neighbor;   /* IE8+ */
               image-rendering: -moz-crisp-edges;          /* Firefox */
               image-rendering: -o-crisp-edges;            /* Opera */
@@ -21,24 +31,34 @@ body      { display: block; box-sizing: border-box;
 
 wrapper   { display: flex; justify-content: center; align-items: center;
             min-height: 100vh; margin: 0; overflow: hidden;
-            filter: url('#fisheye');
+            /* filter: url('#fisheye'); */  /* :( */
           }
 
 screen    { position: absolute; z-index: 100;
             width: calc(60vh * (4 / 3)); height: 60vh; 
-            background-color: rgba(43, 0, 0, 0.2); box-shadow: inset 0 0 50px 10px rgba(69, 0, 0, 0.3); 
+            background-color: #07070710; box-shadow: inset 0 0 50px 10px #80808025; 
             border-radius: 30px; pointer-events: none;
           }
 
-#content  { position: relative; z-index: 99;
-            width: calc(45vh * (4 / 3)); height: 45vh;
-            border: 2px red solid;
+tint      { position: fixed;
+            inset: 0; width: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            background-color: var(--tint); mix-blend-mode:multiply;
           }
 
-h1      {color: red;}
+p         { font-family: UVGA;
+            font-size: 1.1em;
+          }
 
 /* [ Class Formatting ] */
-      
+
+#content  { position: relative; z-index: 99;
+            width: calc(45vh * (4 / 3)); height: 45vh;
+            border: 2px var(--offWhite) solid; padding: 0;
+            margin: 0; box-sizing: border-box;
+          }
+
 .span   {min-height: 100vh; margin: 0; overflow: hidden;}
 
 .fisheye  {filter: url('#fisheye');}
