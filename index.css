@@ -1,100 +1,179 @@
 /* [ Fonts ] */
 
-@font-face {font-family: 'Jackeyfont'; src: url('WOFF/jackeyfont.woff');}                      .J      {font-family: 'Jackeyfont';}
-@font-face {font-family: 'UVGA'; src: url('WOFF/UVGA16.woff');}                                .UVGA   {font-family: 'UVGA';}
+@font-face {
+  font-family: 'Jackeyfont';
+  src: url('WOFF/jackeyfont.woff');
+} .J    { font-family: 'Jackeyfont';
+}
+
+@font-face {
+  font-family: 'UVGA';
+  src: url('WOFF/UVGA16.woff');
+} .UVGA { font-family: 'UVGA';
+}
 
 /* [ Palette ] */
 
-  :root   { --screenBlack:  #000000;
-            --offWhite:     #f3f3f3;
+:root {
+  --screenBlack:  #000000;
+  --midGrey:      #808080;
+  --offWhite:     #f3f3f3;
 
-            --tint:         #ff0000;
-          }
+  --tint: #ff0000;
+}
 
 /* [ Element Formatting ] */
 
-body      { display: block; box-sizing: border-box; 
-            background: var(--screenBlack); color: var(--offWhite); cursor: crosshair;
-            min-height: 100vh; margin: 0; overflow: hidden;
+body {
+  display: block;
+  background: var(--screenBlack);
+  color: var(--offWhite);
+  cursor: crosshair;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
 
-              image-rendering: crisp-edges;               /* ??? */
-              -ms-interpolation-mode: nearest-neighbor;   /* IE8+ */
-              image-rendering: -moz-crisp-edges;          /* Firefox */
-              image-rendering: -o-crisp-edges;            /* Opera */
-              image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-              image-rendering: pixelated;                 /* Chrome */
-              image-rendering: optimizeSpeed;             /* Halt Smoothing */
-              image-rendering: -webkit-optimize-contrast; /* Edge 79+ */
-              image-rendering: optimize-contrast;         /* Some misc. Chromium browsers */
+    /* Pixel-Perfect Image Rendering */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
 
-          }
+}
 
-wrapper   { display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; margin: 0; overflow: hidden;
-            /* filter: url('#fisheye'); */  /* :( */
-          }
+wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
 
-screen    { position: absolute; z-index: 100;
-            width: calc(60vh * (4 / 3)); height: 60vh; 
-            background-color: #07070710; box-shadow: inset 0 0 50px 10px #80808025; 
-            border-radius: 30px; pointer-events: none;
-          }
+tint {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  background-color: var(--tint);
+  mix-blend-mode: multiply;
+}
 
-tint      { position: fixed;
-            inset: 0; width: 100%;
-            z-index: 9999;
-            pointer-events: none;
-            background-color: var(--tint); mix-blend-mode:multiply;
-          }
-
-p         { font-family: UVGA;
-            font-size: 1.1em;
-          }
-
+p.UVGA {
+font-size: 1.1em;
+}
 /* [ Class Formatting ] */
+#content {
+position: relative;
+z-index: 99;
+width: 56.4vh;
+height: 56.4vh;
+border: 2px var(--offWhite) solid;
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
 
-#content  { position: relative; z-index: 99;
-            width: calc(45vh * (4 / 3)); height: 45vh;
-            border: 2px var(--offWhite) solid; padding: 0;
-            margin: 0; box-sizing: border-box;
-          }
+.span {
+min-height: 100vh;
+margin: 0;
+overflow: hidden;
+}
 
-.span   {min-height: 100vh; margin: 0; overflow: hidden;}
+.flex { display: flex; }
+.flex > * { flex: 1 1 0; }
+  .row { flex-flow: row wrap; }
+  .column { flex-flow: column wrap; }
+  .center { justify-content: center; align-items: center; }
 
-.fisheye  {filter: url('#fisheye');}
-
-.flex         {display: flex;}                                    
-  .row        {flex-flow: row wrap;}
-  .column     {flex-flow: column wrap;}
-  .center     {justify-content: center; align-items: center;}
-  .desk       {flex-flow: row wrap; align-items: top;}
-  
 /* [ Miscellaneous ] */
+#custom-cursor {
+position: absolute;
+z-index: 101;
+width: 100%;
+height: 100%;
+pointer-events: none;
+top: 0;
+left: 0;
+}
+.line {
+position: absolute;
+background-color: var(--offWhite);
+}
+.line-horizontal {
+width: 100%;
+height: 2px;
+}
+.line-vertical {
+width: 2px;
+height: 100%;
+}
+::selection {
+color: #111111;
+background: var(--offWhite);
+}
+/* [ Magick Circle ] */
 
-#custom-cursor  { position: absolute; z-index: 101; width: 100%; height: 100%; pointer-events: none;
-                  top: 0;
-                  left: 0;        
-                }
-  .line {position: absolute; background-color: red;}
-  .line-horizontal  {width: 100%; height: 2px;}
-  .line-vertical    {width: 2px; height: 100%;}
+YHWH {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+}
 
-::selection {color: #111111; background: red;}
+YHWH > div {
+  position: absolute;
+  border: 2px var(--offWhite) solid;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 50px 10px #ffffff80;
+  text-align: center;
+}
+
+YHWH > div > p {
+  font-size: 5vh;
+  font-weight: 900;
+  position: inherit;
+}
+
+.outer {
+  width: 90vh;
+  height: 90vh;
+  border-radius: 50%;
+}
+
+.inner {
+  width: 80vh;
+  height: 80vh;
+  border-radius: 50%;
+}
+
+.square {
+  width: 56.4vh;
+  height: 56.4vh;
+  transform: rotateY(0deg) rotate(45deg);
+}
+
+/* TODO: Figure out the exact math for all this and use 'calc()' instead of manually entering numbers. */
+p.☲ {transform: translate(0, -33vh);}
+p.☷ {transform: translate(0, -33vh);}
+p.☱ {transform: translate(33vh, 0) rotateY(0deg) rotate(90deg);}
+p.☰ {transform: translate(33vh, 0) rotateY(0deg) rotate(90deg);}
+p.☵ {transform: translate(0, 33vh);}
+p.☶ {transform: translate(0, 33vh) rotateY(0deg) rotate(180deg);}
+p.☳ {transform: translate(-33vh, 0) rotateY(0deg) rotate(270deg);}
+p.☴ {transform: translate(-33vh, 0) rotateY(0deg) rotate(270deg);}
 
 /* [ Conditional Formatting ] */
-
-@media (pointer: coarse){
-
-  #content {
+@media (pointer: coarse) {
+#content, screen {
     width: 100%;
     height: 100%;
-  }
-
-  screen {
-    width: 100%;
-    height: 100%;
-  }
-
-  .fisheye {filter: none;}
-
+}
+.fisheye {
+    filter: none;
+}
 }
