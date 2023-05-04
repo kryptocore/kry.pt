@@ -90,7 +90,9 @@ a {
   cursor: inherit;
 }
 
-  a:hover { text-decoration: underline; }
+  a:hover { 
+    text-transform: uppercase;
+  }
 
 /* [ Basic Formatting ] */
 
@@ -124,6 +126,44 @@ a {
     background-color: var(--screenBlack);
   }
 
+  #about {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #about > a {
+    position: absolute;
+    bottom: 5%;
+  }
+  
+  #about > div {
+    position: absolute;
+    width: 55%;
+    height: 70%;
+    overflow-y: auto;
+    border: 3px var(--offWhite) solid;
+    color: var(--screenBlack);
+    background-color: var(--offWhite);
+    border-radius: 1%;
+    text-align: center;
+  }
+
+  #about img {
+    position: relative;
+    width: 100%;
+  }
+  
+  
+  #about::-webkit-scrollbar {
+    display: block;
+  }
+  
+
 .modal:not(:target) { display: none; } 
 
 .navNudge { margin-right: 1vh; } /* Quick fix for the ever-so-slight overcentered-ness. */
@@ -136,10 +176,6 @@ a {
   text-align: center;
   font-size: 2vh;
   user-select: none;
-}
-
-.navButton:hover {
-  background-color: var(--midGrey);
 }
 
 .hidden {
