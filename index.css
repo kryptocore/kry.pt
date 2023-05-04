@@ -67,6 +67,7 @@ viewport {
   height: 100vh; 
   max-width: var(100vw); 
   max-height: var(100vh);
+  bottom: 0;
   }
 
 tint {
@@ -387,23 +388,14 @@ p.two   {transform: translate(0,  42.5vh);}
 
 /* [ Element Formatting ] */
 
-  html {
-    height: -webkit-fill-available;
-    }
-
-  body {
-    min-height: 100vh; min-height: -webkit-fill-available;
-    }
-
-  viewport{
-    max-width: 100%; max-height: 100%;
-    }
+viewport { bottom: 0; }
 
 /* [ Basic Formatting ] */
 
   #content {
     width: 100vw;
     height: 100vh;
+    bottom: 0;
   }
 
   .navButton {
