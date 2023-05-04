@@ -64,12 +64,14 @@ body {
 }
 
 wrapper {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
   overflow: hidden;
+  touch-action: none;
 }
 
 tint {
@@ -82,7 +84,7 @@ tint {
   mix-blend-mode: multiply;
 }
 
-/* [ Class Formatting ] */
+/* [ Basic Formatting ] */
 
 #content {
   position: relative;
@@ -97,12 +99,14 @@ tint {
 }
 
 .navButton {
-  width: 8vh;
-  height: 8vh;
-  margin: 1vh 0vh 1vh 1vh;
+  width: 9vh;
+  height: 9vh;
+  margin: 1vh 0 1vh 1vh;
   border: 3px var(--offWhite) solid;
   box-sizing: border-box;
   text-align: center;
+  font-size: 2vh;
+  user-select: none;
 }
 
 .navButton:hover {
@@ -124,7 +128,7 @@ tint {
   .column { flex-flow: column wrap; }
   .center { justify-content: center; align-items: center; }
 
-/* [ Miscellaneous ] */
+/* [ Cursor ] */
 
 #custom-cursor {
   position: absolute;
@@ -160,7 +164,7 @@ YHWH > div {
   position: absolute;
   border: 3px var(--offWhite) solid;
   box-sizing: border-box;
-  box-shadow: inset 0 0 50px 10px #ffffff80;
+  box-shadow: inset 0 0 5vh 1vh #80808080;
   text-align: center;
 }
 
@@ -239,11 +243,7 @@ p.☴ {transform: translate(-33vh, 0) rotateY(0deg) rotate(270deg);}
 p.seven {transform: translate(0, -42vh);}
 p.two   {transform: translate(0,  42.5vh);}
 
-/* [ Conditional Formatting ] */
-
-@media (pointer: coarse) {
-
-}
+/* The Cube */
 
 .cube {
   transform-style: preserve-3d;
@@ -315,3 +315,60 @@ p.two   {transform: translate(0,  42.5vh);}
   100% { transform: rotateX(-45deg) rotateY(360deg); }
 }
 
+/* [ Conditional Formatting ] */
+
+@media (pointer: coarse) {
+
+/* [ Element Formatting ] */
+
+  html { height: -webkit-fill-available; }  /* All three of these height properties fix the annoying '100vh/vw' bugs in mobile Chromium browsers.  */
+
+  body { min-height: 100vh; min-height: -webkit-fill-available; }
+
+  wrapper { max-width: 100%; max-height: 100%; }
+
+/* [ Basic Formatting ] */
+
+  #content {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .navButton {
+    width: 12vh;
+    height: 12vh;
+    font-size: 2.7vh;
+  }
+
+/* [ Cursor ] */
+
+  #custom-cursor {
+    visibility: hidden;
+  }
+
+/* [ Magick Circle ] */
+
+  YHWH > div > p {
+    font-size: 6vh;
+    font-weight: 600;
+    position: inherit;
+  }
+
+  .outer {
+    width: 100vh;
+    height: 100vh;
+    border-radius: 50%;
+  }
+
+  .inner {
+    width: 93vh;
+    height: 93vh;
+    border-radius: 50%;
+  }
+
+  .square {
+    width: 80vh;
+    height: 80vh;
+    transform: rotateY(0deg) rotate(45deg);
+  }
+} 
