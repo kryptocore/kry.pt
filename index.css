@@ -43,41 +43,37 @@
 /* [ Element Formatting ] */
 
 body {
-  display: block;
   background: var(--screenBlack);
   color: var(--offWhite);
   cursor: crosshair;
-  min-height: 100vh;
-  margin: 0;
-  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 100vh; 
+  margin: 0; 
+  overflow: hidden; 
+  display: block;
 
     /* Pixel-Perfect Image Rendering */
-    image-rendering: crisp-edges;
     -ms-interpolation-mode: nearest-neighbor;
     image-rendering: -moz-crisp-edges;
     image-rendering: -o-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
-    image-rendering: optimizeSpeed;
-    image-rendering: -webkit-optimize-contrast;
 
 }
 
-wrapper {
+viewport {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  touch-action: none;
-}
+  width: 100vw; 
+  height: 100vh; 
+  max-width: var(100vw); 
+  max-height: var(100vh);
+  }
 
 tint {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 9999;
   pointer-events: none;
   background-color: var(--tint);
@@ -97,7 +93,7 @@ a {
 /* [ Basic Formatting ] */
 
 #content {
-  position: relative;
+  position: absolute;
   z-index: 99;
   width: 56.4vh;
   height: 56.4vh;
@@ -118,6 +114,7 @@ a {
   padding: 0;
   margin: 0;
   text-align: justify;
+  overflow: hidden;
 }
 
   #poppy h1, #poppy p {
@@ -134,6 +131,7 @@ a {
     background-size: cover;
     padding: 0;
     margin: 0;
+    overflow: hidden;
   }
   
   #about > a {
@@ -175,6 +173,7 @@ a {
   border: 3px var(--offWhite) solid;
   text-align: center;
   font-size: 2vh;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -323,6 +322,7 @@ p.two   {transform: translate(0,  42.5vh);}
   font-family: UVGA;
   font-size: 4vh;
   color: var(--midGrey);
+  -webkit-user-select: none;
   user-select: none;
 }
  
@@ -387,12 +387,6 @@ p.two   {transform: translate(0,  42.5vh);}
 
 /* [ Element Formatting ] */
 
-  html { height: -webkit-fill-available; }  /* All three of these height properties fix the annoying '100vh/vw' bugs in mobile Chromium browsers.  */
-
-  body { min-height: 100vh; min-height: -webkit-fill-available; }
-
-  wrapper { max-width: 100%; max-height: 100%; }
-
 /* [ Basic Formatting ] */
 
   #content {
@@ -404,6 +398,21 @@ p.two   {transform: translate(0,  42.5vh);}
     width: 12vh;
     height: 12vh;
     font-size: 2.7vh;
+  }
+
+  #about > a {
+    bottom: 20vh;
+  }
+  
+  #about > div {
+    width: 55%;
+    height: 45vh;
+    overflow-y: auto;
+    border: 3px var(--offWhite) solid;
+    color: var(--screenBlack);
+    background-color: var(--offWhite);
+    border-radius: 1%;
+    text-align: center;
   }
 
 /* [ Cursor ] */
@@ -437,4 +446,5 @@ p.two   {transform: translate(0,  42.5vh);}
     height: 80vh;
     transform: rotateY(0deg) rotate(45deg);
   }
+
 } 
