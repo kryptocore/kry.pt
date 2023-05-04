@@ -67,6 +67,7 @@ viewport {
   height: 100vh; 
   max-width: var(100vw); 
   max-height: var(100vh);
+  top: 0;
   bottom: 0;
   }
 
@@ -395,6 +396,7 @@ viewport { bottom: 0; }
   #content {
     width: 100vw;
     height: 100vh;
+    top: 0;
     bottom: 0;
   }
 
