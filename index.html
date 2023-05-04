@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test CRT Screen
-    </title>
+    <title>𝕋𝕙𝕖 𝕂𝕣𝕪𝕡𝕥</title>
     <link rel="preload" href="CRT/crt.css" as="style">  <!-- I am not entirely convinced preloading CSS actually does anything, but this should load before anything else. -->
-    <link rel="stylesheet" href="CRT/crt.css">          <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
-    <link rel="stylesheet" href="index.css">       
+      <link rel="stylesheet" href="CRT/crt.css">        <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
+      <link rel="stylesheet" href="index.css">       
   </head>
   <tint><crt></crt></tint>
   <body class="flex center">
     <YHWH class="flex center">
-      <div class="outer">
+      <div class="outer flex center">
+        <p class="seven">◉◎◉</p>
+        <p class="two">  ◎◉◎</p>
       </div>
       <div class="inner flex center">
         <p class="☲">☲</p>
@@ -28,10 +29,43 @@
         <p class="☴">☴</p>
       </div>
     </YHWH>
+    <div class="cube">
+      <div class="top">
+        <p class="NE">ה</p>
+        <p class="NW">ו</p>
+        <p class="SE">ה</p>
+        <p class="SW">י</p>
+      </div>
+      <div class="right"></div>
+      <div class="bottom">
+        <p class="NE">י</p>
+        <p class="NW">נָ</p>
+        <p class="SE">דֹ</p>
+        <p class="SW">אֲ</p>
+      </div>
+      <div class="left"></div>
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
     <wrapper>
       <div id="content" class="flex center UVGA">
         <div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>
-        <p style="padding: 2em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>
+        <div>
+          <div class="navButton flex center"><p>CV</p></div>
+          <div class="navButton flex center"><p>About<br>Me</p></div>
+          <div class="navButton flex center"><p>BBS</p></div>
+        </div>
+        <div>
+          <div class="navButton flex center"><p>Poppy's<br>Kult</div>
+          <div class="navButton flex center hidden"></div>
+          <div class="navButton flex center"><p>?</div>
+        </div>
+        <div>
+          <div class="navButton flex center"><p>Art</div>
+          <div class="navButton flex center"><p>Writ & Prose</div>
+          <div class="navButton flex center"><p>Hobby Pages</div>
+        </div>
+        <!--<p style="padding: 2em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>-->
       </div>
     </wrapper>
   </body>
@@ -50,72 +84,54 @@
     </defs>
   </svg>-->
 
+  <!-- Thank you based god Hosma, may your lineage be hardy and long-lived. -->
   <script>
-    const elements = document.querySelectorAll(".hl");
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      const text = element.textContent;
-      let newText = "";
-      // Add a span element around each letter
-      for (let j = 0; j < text.length; j++) {
-        newText += "<span>" + text[j] + "</span>";
-      }
-      // Replace the element content with the new text with span elements
-      element.innerHTML = newText;
-      // Add a single event listener to the parent element to handle all events (you absolute buffoon)
-      element.addEventListener("mouseover", function(event) {
-        if (event.target.tagName === "SPAN") {
-          event.target.style.backgroundColor = "var(--offWhite)";
-          event.target.style.color = "var(--screenBlack)";
-          const prevLetter = event.target.previousElementSibling;
-          const nextLetter = event.target.nextElementSibling;
-          if (prevLetter) {
-            prevLetter.style.backgroundColor = "var(--midGrey)";
-            prevLetter.style.color = "inherit";
-          }
-          if (nextLetter) {
-            nextLetter.style.backgroundColor = "var(--midGrey)";
-            nextLetter.style.color = "inherit";
-          }
-        }
-      }
-                              );
-      element.addEventListener("mouseout", function(event) {
-        if (event.target.tagName === "SPAN") {
-          event.target.style.backgroundColor = "inherit";
-          event.target.style.color = "inherit";
-          const prevLetter = event.target.previousElementSibling;
-          const nextLetter = event.target.nextElementSibling;
-          if (prevLetter) {
-            prevLetter.style.backgroundColor = "inherit";
-            prevLetter.style.color = "inherit";
-          }
-          if (nextLetter) {
-            nextLetter.style.backgroundColor = "inherit";
-            nextLetter.style.color = "inherit";
-          }
-        }
-      }
-                              );
-      element.addEventListener("mousedown", function(event) {
-        if (event.target.tagName === "SPAN") {
-          event.target.style.backgroundColor = "red";
-          event.target.style.color = "black";
-          const prevLetter = event.target.previousElementSibling;
-          const nextLetter = event.target.nextElementSibling;
-          if (prevLetter) {
-            prevLetter.style.backgroundColor = "maroon";
-            prevLetter.style.color = "inherit";
-          }
-          if (nextLetter) {
-            nextLetter.style.backgroundColor = "maroon";
-            nextLetter.style.color = "inherit";
-          }
-        }
-      }
-                              );
+    /**
+     * @param {HTMLSpanElement} element
+     * @param {Boolean} isHover
+     */
+    function highlightLetter(element, isHover) {
+      // Guard clause :D
+      if (element.tagName !== 'SPAN')
+        return
+
+      // Decide on the appropriate classList method name
+      const classMethod = isHover ? 'add' : 'remove'
+
+      // Add/remove the highlight class
+      element.classList[classMethod]('hovering-letter')
+
+      const neighborLetters = [
+        element.previousElementSibling,
+        element.nextElementSibling,
+      ]
+
+      // Toggle the hover class for either neighbor (if any)
+      for (const letter of neighborLetters)
+        (letter) && letter.classList[classMethod]('hovering-letter-neighbor')
+    }
+
+
+    const hlElements = document.querySelectorAll(".hl")
+
+    for (const element of hlElements) {
+      // Spanishize every single character contained by each .hl
+      element.innerHTML = element.innerHTML
+        .replace(/(.)/g, '<span>$1</span>')
+
+      // Add event listeners to handle the hover effect
+      element.addEventListener(
+        'mouseover',
+        (event)=> highlightLetter(event.target, true),
+        {passive: true})
+
+      element.addEventListener(
+        'mouseout',
+        (event)=> highlightLetter(event.target, false),
+        {passive: true})
     }
   </script>
+  
   <script>
     const customCursor = document.getElementById("custom-cursor");
     const confine = document.getElementById("content");
