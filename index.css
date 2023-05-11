@@ -270,16 +270,6 @@ YHWH > div > p {
   transform: rotateY(0deg) rotate(45deg);
 }
 
-@keyframes jitter {
-  0% { transform: translateY(0); }
-  90% { transform: translateY(0.05vh); }
-  100% { transform: translateY(0); }
-}
-
-YHWH, viewport {
-  animation: jitter 2s step-start infinite;
-}
-
 @keyframes rotate-counter-clockwise {
   0% { transform: rotate(0deg); }
   40% { transform: rotate(0deg); }
