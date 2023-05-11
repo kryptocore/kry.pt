@@ -15,23 +15,24 @@
 */
 
 crt {   background-image: url('pixel.apng');
-        background-size: 2px 1px;
-        background-color: white;
-        background-blend-mode: hard-light;  /* <- Helps combat the 'darkening' effect from multiply.  */
-        mix-blend-mode: multiply;
-        pointer-events: none;
-        opacity: 0.4;
-        position: absolute; 
-        width: 100%; 
-        inset: 0;
-        z-index: 999999;
-    }
+    background-size: 2px 1px;
+    background-color: white;
+    background-blend-mode: hard-light;  /* <- Helps combat the 'darkening' effect from multiply.  */
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    opacity: 0.4;
+    position: absolute; 
+    width: 100%; 
+    inset: 0;
+    z-index: 999999;
+    will-change: transform;
+}
 
 /*  Firefox deals with opacity rendering differently, so I have to drastically lower it. 
-    Eats RAM, defeating the purpose, but Firefox is lame anyways so I don't really care.  */
+Eats RAM, defeating the purpose, but Firefox is lame anyways so I don't really care.  */
 
 @-moz-document url-prefix() {
 
-    crt {opacity: 0.1;}
+crt {opacity: 0.1;}
 
 }

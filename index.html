@@ -9,9 +9,9 @@
       <link rel="stylesheet" href="CRT/crt.css">        <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
       <link rel="stylesheet" href="index.css">       
   </head>
-  <tint></tint>
-  <body>
-    <viewport class="flex center">
+  <crt></crt>
+  <body class="tint">
+    <div class="viewport flex center">
     <YHWH class="flex center">
       <div class="outer flex center">
         <p class="seven">◉◎◉</p>
@@ -100,7 +100,7 @@
 
         <!--<p style="padding: 2em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>-->
       </div>
-    </viewport>
+    </div>
   </body>
 
   <!--  
@@ -165,7 +165,7 @@
     }
   </script>
   
-  <script>
+  <!--<script>
     const customCursor = document.getElementById("custom-cursor");
     const confine = document.getElementById("content");
     const horizontalLine = customCursor.querySelector(".line-horizontal");
@@ -195,6 +195,39 @@
       customCursor.style.display = "none";
     }
                             );
+  </script>-->
+
+  <script>
+    const customCursor = document.getElementById("custom-cursor");
+    const confine = document.getElementById("content");
+    const horizontalLine = customCursor.querySelector(".line-horizontal");
+    const verticalLine = customCursor.querySelector(".line-vertical");
+    let latestMouseMove;
+  
+    function updateCustomCursor() {
+      const areaRect = confine.getBoundingClientRect();
+      const confinedX = latestMouseMove.clientX - areaRect.left;
+      const confinedY = latestMouseMove.clientY - areaRect.top;
+  
+      horizontalLine.style.transform = `translateY(${confinedY}px)`;
+      verticalLine.style.transform = `translateX(${confinedX}px)`;
+    }
+  
+    confine.addEventListener("mousemove", (e) => {
+      latestMouseMove = e;
+      requestAnimationFrame(updateCustomCursor);
+    });
+  
+    confine.addEventListener("mouseenter", () => {
+      document.body.style.cursor = "none";
+      customCursor.style.display = "block";
+    });
+  
+    confine.addEventListener("mouseleave", () => {
+      document.body.style.cursor = "crosshair";
+      customCursor.style.display = "none";
+    });
   </script>
+  
 
 </html>
