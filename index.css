@@ -1,470 +1,496 @@
 /* [ Fonts ] */
 
-@font-face {
-  font-family: 'Jackeyfont';
-  src: url('WOFF/jackeyfont.woff');
-} .J    { font-family: 'Jackeyfont';
-}
+  @font-face {
+    font-family: 'Jackeyfont';
+    src: url('WOFF/jackeyfont.woff');
+  } .J    { font-family: 'Jackeyfont';
+  }
 
-@font-face {
-  font-family: 'UVGA';
-  src: url('WOFF/UVGA16.woff');
-} .UVGA { font-family: 'UVGA';
-}
+  @font-face {
+    font-family: 'UVGA';
+    src: url('WOFF/UVGA16.woff');
+  } .UVGA { font-family: 'UVGA';
+  }
 
-@font-face {
-  font-family: 'FS';
-  src: url('WOFF/FreeSerif.woff');
-} .FS { font-family: 'FS';
-}
+  @font-face {
+    font-family: 'FS';
+    src: url('WOFF/FreeSerif.woff');
+  } .FS { font-family: 'FS';
+  }
 
-@font-face {
-  font-family: 'FSB';
-  src: url('WOFF/FreeSerifBold.woff');
-} .FSB { font-family: 'FSB';
-}
+  @font-face {
+    font-family: 'FSB';
+    src: url('WOFF/FreeSerifBold.woff');
+  } .FSB { font-family: 'FSB';
+  }
 
-@font-face {
-  font-family: 'FSBI';
-  src: url('WOFF/FreeSerifBoldItalic.woff');
-} .FSBI { font-family: 'FSBI';
-}
+  @font-face {
+    font-family: 'FSBI';
+    src: url('WOFF/FreeSerifBoldItalic.woff');
+  } .FSBI { font-family: 'FSBI';
+  }
 
 /* [ Palette ] */
 
-:root {
-  --screenBlack:  #000000;
-  --midGrey:      #808080;
-  --offWhite:     #f3f3f3;
+  :root {
+    --screenBlack:  #000000;
+    --midGrey:      #808080;
+    --offWhite:     #f3f3f3;
 
-  --tint: #ff0000;
-}
+    --tint: #ff0000;
+  }
 
 /* [ Element Formatting ] */
 
-* { box-sizing: border-box; }
+  * { box-sizing: border-box; }
 
-html {
-  line-height: 1.1; 
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  background: var(--screenBlack);
-  color: var(--offWhite);
-  cursor: crosshair;
-  box-sizing: border-box;
-  min-height: 100vh; 
-  margin: 0; 
-  overflow: hidden; 
-  display: block;
-
-    /* Pixel-Perfect Image Rendering */
-    -ms-interpolation-mode: nearest-neighbor;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: pixelated;
-
-}
-
-viewport {
-  isolation: isolate;
-  position: fixed;
-  width: 100vw; 
-  height: 100vh; 
-  max-width: 100vw; 
-  max-height: 100vh;
+  html {
+    line-height: 1.1; 
+    -webkit-text-size-adjust: 100%;
   }
 
-tint {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  pointer-events: none;
-  background-color: var(--tint);
-  mix-blend-mode: multiply;
-}
-
-a {
-  text-decoration: none; 
-  color: inherit; 
-  cursor: inherit;
-}
-
-  a:hover { 
-    text-transform: uppercase;
-  }
-
-/* [ Basic Formatting ] */
-
-#content {
-  position: absolute;
-  z-index: 99;
-  width: 56.4vh;
-  height: 56.4vh;
-  border: 3px var(--offWhite) solid;
-  /* background-color: var(--screenBlack); */
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#poppy {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  background: url('GIF/redratz.gif') center no-repeat, var(--screenBlack);
-  background-size: cover;
-  padding: 0;
-  margin: 0;
-  text-align: justify;
-  overflow: hidden;
-}
-
-  #poppy h1, #poppy p {
-    padding: 10px;
-    margin: 10px;
-    background-color: var(--screenBlack);
-  }
-
-  #about {
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-  
-  #about > a {
-    position: absolute;
-    bottom: 5%;
-  }
-  
-  #about > div {
-    position: absolute;
-    width: 55%;
-    height: 70%;
-    overflow-y: auto;
-    border: 3px var(--offWhite) solid;
-    color: var(--screenBlack);
-    background-color: var(--offWhite);
-    border-radius: 1%;
-    text-align: center;
-  }
-
-  #about img {
-    position: relative;
-    width: 100%;
-  }
-  
-  
-  #about::-webkit-scrollbar {
+  body {
+    background: radial-gradient(circle, #000000 0%, #252525 81%, #363636 100%), var(--screenBlack);
+    color: var(--offWhite);
+    cursor: crosshair;
+    box-sizing: border-box;
+    min-height: 100vh; 
+    margin: 0; 
+    overflow: hidden; 
     display: block;
+
+      /* Pixel-Perfect Image Rendering */
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: pixelated;
+
   }
-  
 
-.modal:not(:target) { display: none; } 
-
-.navNudge { margin-right: 1vh; } /* Quick fix for the ever-so-slight overcentered-ness. */
-
-.navButton {
-  width: 9vh;
-  height: 9vh;
-  margin: 1vh 0 1vh 0;
-  border: 3px var(--offWhite) solid;
-  text-align: center;
-  font-size: 2vh;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.span {
-  min-height: 100vh;
-  margin: 0;
-  overflow: hidden;
-}
-
-.flex { display: flex; }
-  .row { flex-flow: row wrap; }
-  .column { flex-flow: column wrap; }
-  .center { justify-content: center; align-items: center; }
-
-/* [ Cursor ] */
-
-#custom-cursor {
-  position: absolute;
-  z-index: 101;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-}
-
-.line { position: absolute; background-color: var(--offWhite); }
-.line-horizontal { width: 100%; height: 3px; }
-.line-vertical { width: 3px; height: 100%; }
-
-.hovering-letter {background-color: var(--offWhite); color: var(--screenBlack);}
-.hovering-letter-neighbor {background-color: var(--midGrey);}
-
-::selection {
-  color: var(--midGrey);
-  background: var(--offWhite);
-}
-
-/* [ Magick Circle ] */
-
-YHWH {
-  position: absolute;
-  z-index: 100;
-  pointer-events: none;
-}
-
-YHWH > div {
-  position: absolute;
-  border: 3px var(--offWhite) solid;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 5vh 1vh #80808080;
-  text-align: center;
-}
-
-YHWH > div > p {
-  font-size: 4vh;
-  font-weight: 600;
-  position: inherit;
-}
-
-.outer {
-  width: 90vh;
-  height: 90vh;
-  border-radius: 50%;
-}
-
-.inner {
-  width: 80vh;
-  height: 80vh;
-  border-radius: 50%;
-}
-
-.square {
-  width: 56.4vh;
-  height: 56.4vh;
-  transform: rotateY(0deg) rotate(45deg);
-}
-
-@keyframes jitter {
-  0% { transform: translateY(0); }
-  90% { transform: translateY(0.05vh); }
-  100% { transform: translateY(0); }
-}
-
-YHWH, wrapper {
-  animation: jitter 1s step-start infinite;
-}
-
-@keyframes rotate-counter-clockwise {
-  0% { transform: rotate(0deg); }
-  40% { transform: rotate(0deg); }
-  46% { transform: rotate(5deg); }
-  50% { transform: rotate(-180deg); }
-  90% { transform: rotate(-180deg); }
-  96% { transform: rotate(-175deg); }
-  100% { transform: rotate(-360deg); }
-}
-
-@keyframes rotate-clockwise {
-  0% { transform: rotate(45deg); }
-  40% { transform: rotate(45deg); }
-  46% { transform: rotate(40deg); }
-  50% { transform: rotate(225deg); }
-  90% { transform: rotate(225deg); }
-  96% { transform: rotate(220deg); }
-  100% { transform: rotate(405deg); }
-}
-
-.outer, .inner {
-  animation: rotate-counter-clockwise 30s ease-in-out infinite;
-}
-
-.square {
-  animation: rotate-clockwise 30s ease-in-out infinite;
-}
-
-/* TODO: Figure out the exact math for all this and use 'calc()' instead of manually entering numbers. */
-p.☲ {transform: translate(0, -33vh);}
-p.☷ {transform: translate(0, -33vh);}
-p.☱ {transform: translate(33vh, 0) rotateY(0deg) rotate(90deg);}
-p.☰ {transform: translate(33vh, 0) rotateY(0deg) rotate(90deg);}
-p.☵ {transform: translate(0, 33vh);}
-p.☶ {transform: translate(0, 33vh) rotateY(0deg) rotate(180deg);}
-p.☳ {transform: translate(-33vh, 0) rotateY(0deg) rotate(270deg);}
-p.☴ {transform: translate(-33vh, 0) rotateY(0deg) rotate(270deg);}
-
-p.seven {transform: translate(0, -42vh);}
-p.two   {transform: translate(0,  42.5vh);}
-
-/* The Cube */
-
-.cube {
-  transform-style: preserve-3d;
-  animation: spin 60s infinite ease-in-out;
-  position: absolute;
-  width: 30vh;
-  height: 30vh;
-  top: 50%;
-  left: 50%;
-  margin-left: -15vh;
-  margin-top: -15vh;
-  font-family: UVGA;
-  font-size: 4vh;
-  color: var(--midGrey);
-  -webkit-user-select: none;
-  user-select: none;
-}
- 
-.cube div {
-  width: 30vh;
-  height: 30vh;
-  line-height: 30vh;
-  border: 1px var(--midGrey) solid;
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-}
-
-.NE {position: absolute; top: -16vh; right: 1vh;}
-.NW {position: absolute; top: -16vh; left: 1vh;}
-.SE {position: absolute; bottom: -16vh; right: 1vh;}
-.SW {position: absolute; bottom: -16vh; left: 1vh;}
- 
-.cube div.top {
-  transform: rotateX(90deg); 
-  margin-top: -15vh;
-}
- 
-.cube div.right {
-  transform: rotateY(90deg); 
-  margin-left: 15vh;
-}
- 
-.cube div.bottom {
-  transform: rotateX(-90deg); 
-  margin-top: 15vh;
-}
- 
-.cube div.left {
-  transform: rotateY(-90deg); 
-  margin-left: -15vh;
-}
- 
-.cube div.front {
-  transform: translateZ(15vh);
-}
- 
-.cube div.back {
-  transform: translateZ(-15vh) rotateX(180deg);
-}
- 
-@keyframes spin {
-  0% { transform: rotateX(-45deg) rotateY(0deg); }
-  12.5% { transform: rotateX(-45deg) rotateY(45deg); }
-  25% { transform: rotateX(-45deg) rotateY(90deg); }
-  37.5% { transform: rotateX(-45deg) rotateY(135deg); }
-  50% { transform: rotateX(-45deg) rotateY(180deg); }
-  62.5% { transform: rotateX(-45deg) rotateY(225deg); }
-  75% { transform: rotateX(-45deg) rotateY(270deg); }
-  87.5% { transform: rotateX(-45deg) rotateY(315deg); }
-  100% { transform: rotateX(-45deg) rotateY(360deg); }
-}
-
-/* [ Conditional Formatting ] */
-
-@media (pointer: coarse) {
-
-/* [ Element Formatting ] */
-
-html {
-  height: -webkit-fill-available;
-  }
-          /* All three of these height properties fix the annoying '100vh' bugs in mobile Chromium browsers.  */
-body {
-    min-height: 100vh; min-height: -webkit-fill-available;
+  viewport {
+    isolation: isolate;
+    position: fixed;
+    width: 100vw; 
+    height: 100vh; 
+    max-width: 100vw; 
+    max-height: 100vh;
     }
 
-viewport{
-    max-width: 100%; max-height: 100%;
+  tint {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    background-color: var(--tint);
+    mix-blend-mode: multiply;
+  }
+
+  a {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: inherit;
+  }
+
+    a:hover { 
+      text-transform: uppercase;
     }
 
 /* [ Basic Formatting ] */
 
   #content {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    z-index: 99;
+    width: 56.4vh;
+    height: 56.4vh;
+    border: 3px var(--offWhite) solid;
+    /* background-color: var(--screenBlack); */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
+
+  #poppy {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: url('GIF/redratz.gif') center no-repeat, var(--screenBlack);
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+    overflow: hidden;
+  }
+
+    #poppy h1, #poppy p {
+      padding: 10px;
+      margin: 10px;
+      background-color: var(--screenBlack);
+    }
+
+    #about {
+      position: absolute;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    
+    #about > a {
+      position: absolute;
+      bottom: 5%;
+    }
+    
+    #about > div {
+      position: absolute;
+      width: 55%;
+      height: 70%;
+      overflow-y: auto;
+      border: 3px var(--offWhite) solid;
+      color: var(--screenBlack);
+      background-color: var(--offWhite);
+      border-radius: 1%;
+      text-align: center;
+    }
+
+    #about img {
+      position: relative;
+      width: 100%;
+    }
+    
+    
+    #about::-webkit-scrollbar {
+      display: block;
+    }
+    
+
+  .modal:not(:target) { display: none; } 
+
+  .navNudge { margin-right: 1vh; } /* Quick fix for the ever-so-slight overcentered-ness. */
 
   .navButton {
-    width: 12vh;
-    height: 12vh;
-    font-size: 2.7vh;
+    width: 9vh;
+    height: 9vh;
+    margin: 1vh 0 1vh 0;
+    border: 3px var(--offWhite) solid;
+    text-align: center;
+    font-size: 2vh;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
-  #about > a {
-    bottom: 20vh;
+  .hidden {
+    visibility: hidden;
   }
-  
-  #about > div {
-    width: 55%;
-    height: 45vh;
-    overflow-y: auto;
-    border: 3px var(--offWhite) solid;
-    color: var(--screenBlack);
-    background-color: var(--offWhite);
-    border-radius: 1%;
-    text-align: center;
+
+  .span {
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
   }
+
+  .flex { display: flex; }
+    .row { flex-flow: row wrap; }
+    .column { flex-flow: column wrap; }
+    .center { justify-content: center; align-items: center; }
 
 /* [ Cursor ] */
 
   #custom-cursor {
-    visibility: hidden;
+    position: absolute;
+    z-index: 101;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+  }
+
+  .line { position: absolute; background-color: var(--offWhite); }
+  .line-horizontal { width: 100%; height: 3px; }
+  .line-vertical { width: 3px; height: 100%; }
+
+  .hovering-letter {background-color: var(--offWhite); color: var(--screenBlack);}
+  .hovering-letter-neighbor {background-color: var(--midGrey);}
+
+  ::selection {
+    color: var(--midGrey);
+    background: var(--offWhite);
   }
 
 /* [ Magick Circle ] */
 
+  YHWH {
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  YHWH > div {
+    position: absolute;
+    border: 3px var(--offWhite) solid;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5vh 1vh #80808080;
+    text-align: center;
+  }
+
   YHWH > div > p {
-    font-size: 6vh;
+    font-size: 4vh;
     font-weight: 600;
     position: inherit;
   }
 
   .outer {
-    width: 100vh;
-    height: 100vh;
+    width: 90vh;
+    height: 90vh;
     border-radius: 50%;
+    filter: blur(4px);
   }
 
   .inner {
-    width: 93vh;
-    height: 93vh;
+    width: 80vh;
+    height: 80vh;
     border-radius: 50%;
   }
 
   .square {
-    width: 80vh;
-    height: 80vh;
+    width: 56.4vh;
+    height: 56.4vh;
     transform: rotateY(0deg) rotate(45deg);
   }
 
-} 
+  @keyframes jitter {
+    0% { transform: translateY(0); }
+    90% { transform: translateY(0.05vh); }
+    100% { transform: translateY(0); }
+  }
+  
+  YHWH, viewport {
+    animation: jitter 2s step-start infinite;
+  }
+
+  @keyframes rotate-counter-clockwise {
+    0% { transform: rotate(0deg); }
+    40% { transform: rotate(0deg); }
+    46% { transform: rotate(5deg); }
+    50% { transform: rotate(-180deg); }
+    90% { transform: rotate(-180deg); }
+    96% { transform: rotate(-175deg); }
+    100% { transform: rotate(-360deg); }
+  }
+
+  @keyframes rotate-clockwise {
+    0% { transform: rotate(45deg); }
+    40% { transform: rotate(45deg); }
+    46% { transform: rotate(40deg); }
+    50% { transform: rotate(225deg); }
+    90% { transform: rotate(225deg); }
+    96% { transform: rotate(220deg); }
+    100% { transform: rotate(405deg); }
+  }
+  
+  .outer, .inner {
+    animation: rotate-counter-clockwise 30s ease-in-out infinite;
+  }
+
+  .square {
+    animation: rotate-clockwise 30s ease-in-out infinite;
+  }
+
+    .trigrams p { --trigram-distance: 32.5vh; }
+
+    .trigrams p:nth-child(1){ transform: translate( 0, calc( 0vh - var(--trigram-distance) ) ); }
+    .trigrams p:nth-child(2){ transform: translate( var(--trigram-distance) , 0)  rotate(90deg); }
+    .trigrams p:nth-child(3){ transform: translate( 0, var(--trigram-distance) )  rotate(180deg); }
+    .trigrams p:nth-child(4){ transform: translate( calc( 0vh - var(--trigram-distance) ), 0) rotate(270deg); }
+
+  p.seven { transform: translate(0, -40vh); }
+  p.two   { transform: translate(0,  40vh); }
+
+/* The Cube */
+ 
+  .cube {
+    transform-style: preserve-3d;
+    animation: spin 60s ease-in-out infinite;
+    position: absolute;
+    width: 30vh;
+    height: 30vh;
+    font-size: 5vh;
+    color: var(--midGrey);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+   
+  .cube div {
+    width: 30vh;
+    height: 30vh;
+    line-height: 30vh;
+    border: 1px var(--midGrey) solid;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    filter: blur(2px);
+  }
+
+  .NE {position: absolute; top: -17vh; right: 1vh;}
+  .NW {position: absolute; top: -17vh; left: 1vh;}
+  .SE {position: absolute; bottom: -17vh; right: 1vh;}
+  .SW {position: absolute; bottom: -17vh; left: 1vh;}
+   
+  .cube div.top   { transform: translate(0, -15vh) rotateX(90deg); }
+  .cube div.right { transform: translate(15vh, 0)  rotateY(90deg); }  
+  .cube div.bottom{ transform: translate(0, 15vh)  rotateX(-90deg);}
+  .cube div.left  { transform: translate(-15vh, 0) rotateY(-90deg);}
+  .cube div.back  { transform: translateZ(-15vh)   rotateX(180deg);}
+  .cube div.front { transform: translateZ(15vh); }
+   
+  @keyframes spin {
+    0% { transform: rotateX(-45deg) rotateY(0deg); }
+    12.5% { transform: rotateX(-45deg) rotateY(45deg); }
+    25% { transform: rotateX(-45deg) rotateY(90deg); }
+    37.5% { transform: rotateX(-45deg) rotateY(135deg); }
+    50% { transform: rotateX(-45deg) rotateY(180deg); }
+    62.5% { transform: rotateX(-45deg) rotateY(225deg); }
+    75% { transform: rotateX(-45deg) rotateY(270deg); }
+    87.5% { transform: rotateX(-45deg) rotateY(315deg); }
+    100% { transform: rotateX(-45deg) rotateY(360deg); }
+  }
+
+/* [ The Zodiac ] */
+
+  .zodiac {
+    position: absolute;
+    width: 120vh;
+    height: 120vh;
+    border-radius: 50%;
+    border: var(--midGrey) solid 1px;
+    animation: zodiac-clockwise 180s linear infinite;
+    filter: blur(2px);
+  }
+
+    .zodiac p {
+      position: absolute;
+      color: var(--midGrey);
+      font-size: 4vh;
+      --zodiac-spacing: 30deg;
+      --zodiac-distance: -77vh;
+    }
+    
+    .zodiac p:nth-child(1) { transform: rotate( 0deg )                           translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(2) { transform: rotate(          var(--zodiac-spacing))  translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(3) { transform: rotate(calc( 2 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(4) { transform: rotate(calc( 3 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(5) { transform: rotate(calc( 4 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(6) { transform: rotate(calc( 5 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(7) { transform: rotate(calc( 6 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(8) { transform: rotate(calc( 7 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(9) { transform: rotate(calc( 8 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(10){ transform: rotate(calc( 9 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(11){ transform: rotate(calc(10 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(12){ transform: rotate(calc(11 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+
+    @keyframes zodiac-clockwise {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+/* [ Conditional Formatting ] */
+
+  @media (pointer: coarse) {
+
+  /* [ Element Formatting ] */
+
+  html {
+    height: -webkit-fill-available;
+    }
+            /* All three of these height properties fix the annoying '100vh' bugs in mobile Chromium browsers.  */
+  body {
+      min-height: 100vh; min-height: -webkit-fill-available;
+      }
+
+  viewport{
+      max-width: 100%; max-height: 100%;
+      }
+
+  /* [ Basic Formatting ] */
+
+    #content {
+      width: 96vw;
+      height: 96vh;
+    }
+  
+    .navButton {
+      width: 12vh;
+      height: 12vh;
+      font-size: 2.7vh;
+    }
+
+    #about > a {
+      bottom: 20vh;
+    }
+    
+    #about > div {
+      width: 55%;
+      height: 45vh;
+      overflow-y: auto;
+      border: 3px var(--offWhite) solid;
+      color: var(--screenBlack);
+      background-color: var(--offWhite);
+      border-radius: 1%;
+      text-align: center;
+    }
+
+  /* [ Cursor ] */
+
+    #custom-cursor {
+      visibility: hidden;
+    }
+
+  /* [ Magick Circle ] */
+
+    YHWH > div > p {
+      font-size: 6vh;
+      font-weight: 600;
+      position: inherit;
+    }
+
+    .outer {
+      width: 99vh;
+      height: 99vh;
+      border-radius: 50%;
+    }
+
+    .inner {
+      width: 93vh;
+      height: 93vh;
+      border-radius: 50%;
+    }
+
+    .square {
+      width: 80vh;
+      height: 80vh;
+    }
+
+    .zodiac {
+      border: none;
+    }
+
+      .zodiac p {
+        --zodiac-distance: -47.6vh;
+        font-size: 2vh;
+      }
+
+    #content, .outer, .inner, .square, .navButton {
+      border-width: 2px;
+      font-weight: 100;
+    }
+
+  } 
+  
