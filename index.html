@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>𝕋𝕙𝕖 𝕂𝕣𝕪𝕡𝕥</title>
-    <link rel="preload" href="CRT/crt.css" as="style">  <!-- I am not entirely convinced preloading CSS actually does anything, but this should load before anything else. -->
-      <link rel="stylesheet" href="CRT/crt.css">        <!-- crt.css is a CRT "screen door" effect. Requires an element called <crt> to function. -->
-      <link rel="stylesheet" href="index.css">       
+    <link rel="stylesheet" href="index.css">       
   </head>
 
-  <body class="tint">
+  <body class="">
     <div class="viewport flex center">
     <YHWH class="flex center">
       <div class="outer flex center">
@@ -54,7 +52,7 @@
 
       <div id="content" class="flex center UVGA">
 
-        <div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>
+        <!--<div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>-->
         
         <div class="navNudge"> <!-- This is fine for now but change to grid later. -->
           <div class="navButton flex center"><p>CV<br>Place-holder</p></div>
@@ -98,136 +96,25 @@
           <a href="#"><p>◈ return ◈</p></a>
         </div>
 
-        <!--<p style="padding: 2em;"><span class="hl">"Goodness overpowers passion and ignorance, passion defeats goodness and ignorance, and ignorance overcomes goodness and passion. Thus the modes continually fight for supremacy."</span><br><br><span class="hl">श्रीमद्भगवद्गीता XIV:X</span></p>-->
       </div>
     </div>
   </body>
 
-  <!--  
-    A relic from a bygone idea. A cool fisheye filter that I'm hella proud of. 
-    Unfortunately, if your computer was made pre-pandemic, your poor browser can't render it without your fans sounding like a jet engine. 
-    Somehow, this is Tigo's fault.
-  -->
-  <!--<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
-    <defs>
-    <filter id="fisheye">
-    <feImage xlink:href="PNG/fisheye.png" result="lightMap" preserveAspectRatio="none"/>
-    <feDisplacementMap in2="lightMap" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" scale="130"/>
+<!--<script src="cursor.js"></script>-->
+<!--<script src="highlight.js"></script>-->
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters">
+  <defs>
+    <filter id="lessBlur">
+      <feGaussianBlur stdDeviation="1"></feGaussianBlur>
     </filter>
-    </defs>
-  </svg>-->
-
-  <!-- Thank you based god Hosma, may your lineage be hardy and long-lived. -->
-  <script>
-    /**
-     * @param {HTMLSpanElement} element
-     * @param {Boolean} isHover
-     */
-    function highlightLetter(element, isHover) {
-      // Guard clause :D
-      if (element.tagName !== 'SPAN')
-        return
-
-      // Decide on the appropriate classList method name
-      const classMethod = isHover ? 'add' : 'remove'
-
-      // Add/remove the highlight class
-      element.classList[classMethod]('hovering-letter')
-
-      const neighborLetters = [
-        element.previousElementSibling,
-        element.nextElementSibling,
-      ]
-
-      // Toggle the hover class for either neighbor (if any)
-      for (const letter of neighborLetters)
-        (letter) && letter.classList[classMethod]('hovering-letter-neighbor')
-    }
-
-
-    const hlElements = document.querySelectorAll(".hl")
-
-    for (const element of hlElements) {
-      // Spanishize every single character contained by each .hl
-      element.innerHTML = element.innerHTML
-        .replace(/(.)/g, '<span>$1</span>')
-
-      // Add event listeners to handle the hover effect
-      element.addEventListener(
-        'mouseover',
-        (event)=> highlightLetter(event.target, true),
-        {passive: true})
-
-      element.addEventListener(
-        'mouseout',
-        (event)=> highlightLetter(event.target, false),
-        {passive: true})
-    }
-  </script>
-  
-  <!--<script>
-    const customCursor = document.getElementById("custom-cursor");
-    const confine = document.getElementById("content");
-    const horizontalLine = customCursor.querySelector(".line-horizontal");
-    const verticalLine = customCursor.querySelector(".line-vertical");
-    let latestMouseMove;
-    function updateCustomCursor() {
-      const areaRect = confine.getBoundingClientRect();
-      const viewportOffsetLeft = window.pageXOffset;
-      const viewportOffsetTop = window.pageYOffset;
-      const confinedX = latestMouseMove.clientX - areaRect.left + viewportOffsetLeft;
-      const confinedY = latestMouseMove.clientY - areaRect.top + viewportOffsetTop;
-      horizontalLine.style.top = confinedY + "px";
-      verticalLine.style.left = confinedX + "px";
-    }
-    confine.addEventListener("mousemove", (e) => {
-      latestMouseMove = e;
-      requestAnimationFrame(updateCustomCursor);
-    }
-                            );
-    confine.addEventListener("mouseenter", () => {
-      document.body.style.cursor = "none";
-      customCursor.style.display = "block";
-    }
-                            );
-    confine.addEventListener("mouseleave", () => {
-      document.body.style.cursor = "crosshair";
-      customCursor.style.display = "none";
-    }
-                            );
-  </script>-->
-
-  <script>
-    const customCursor = document.getElementById("custom-cursor");
-    const confine = document.getElementById("content");
-    const horizontalLine = customCursor.querySelector(".line-horizontal");
-    const verticalLine = customCursor.querySelector(".line-vertical");
-    let latestMouseMove;
-  
-    function updateCustomCursor() {
-      const areaRect = confine.getBoundingClientRect();
-      const confinedX = latestMouseMove.clientX - areaRect.left;
-      const confinedY = latestMouseMove.clientY - areaRect.top;
-  
-      horizontalLine.style.transform = `translateY(${confinedY}px)`;
-      verticalLine.style.transform = `translateX(${confinedX}px)`;
-    }
-  
-    confine.addEventListener("mousemove", (e) => {
-      latestMouseMove = e;
-      requestAnimationFrame(updateCustomCursor);
-    });
-  
-    confine.addEventListener("mouseenter", () => {
-      document.body.style.cursor = "none";
-      customCursor.style.display = "block";
-    });
-  
-    confine.addEventListener("mouseleave", () => {
-      document.body.style.cursor = "crosshair";
-      customCursor.style.display = "none";
-    });
-  </script>
-  
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+    </filter>
+    <filter id="lottaBlur">
+      <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>
 
 </html>

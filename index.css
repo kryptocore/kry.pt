@@ -33,11 +33,15 @@
 /* [ Palette ] */
 
 :root {
-  --screenBlack:  #000000;
+  /* --screenBlack:  #000000; */
+  --screenBlack:  #f3f3f3;
   --midGrey:      #808080;
-  --offWhite:     #f3f3f3;
+  --darkGrey:     #252525;
+  /* --offWhite:     #f3f3f3; */
+  --offWhite:     #000000;
 
   --tint: #ff0000;
+
 }
 
 /* [ Element Formatting ] */
@@ -47,12 +51,13 @@
 }
 
 html {
+  font-size: 1.1vh;
   line-height: 1.1;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: radial-gradient(circle, #000000 0%, #252525 81%, #363636 100%), var(--screenBlack);
+  background: radial-gradient(circle, var(--screenBlack) 0%, var(--darkGrey) 81%, var(--offWhite) 100%), var(--screenBlack);
   color: var(--offWhite);
   cursor: crosshair;
   box-sizing: border-box;
@@ -60,6 +65,7 @@ body {
   margin: 0;
   overflow: hidden;
   display: block;
+  font-size: 1.8rem;
 
   /* Pixel-Perfect Image Rendering */
   -ms-interpolation-mode: nearest-neighbor;
@@ -108,8 +114,7 @@ a {
   z-index: 99;
   width: 56.4vh;
   height: 56.4vh;
-  border: 3px var(--offWhite) solid;
-  /* background-color: var(--screenBlack); */
+  border: 0.4rem var(--offWhite) solid;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -129,9 +134,10 @@ a {
 }
 
   #poppy h1, #poppy p {
-    padding: 10px;
-    margin: 10px;
+    padding: 2rem;
+    margin: 2rem;
     background-color: var(--screenBlack);
+    font-size: 2rem;
   }
 
   #about {
@@ -155,7 +161,7 @@ a {
     width: 55%;
     height: 70%;
     overflow-y: auto;
-    border: 3px var(--offWhite) solid;
+    border: 0.1rem var(--offWhite) solid;
     color: var(--screenBlack);
     background-color: var(--offWhite);
     border-radius: 1%;
@@ -181,7 +187,7 @@ a {
   width: 9vh;
   height: 9vh;
   margin: 1vh 0 1vh 0;
-  border: 3px var(--offWhite) solid;
+  border: 0.4rem var(--offWhite) solid;
   text-align: center;
   font-size: 2vh;
   -webkit-user-select: none;
@@ -217,8 +223,8 @@ a {
 }
 
 .line { position: absolute; background-color: var(--offWhite); will-change: transform; }
-.line-horizontal { width: 100%; height: 3px; }
-.line-vertical { width: 3px; height: 100%; }
+.line-horizontal { width: 100%; height: 0.4rem; }
+.line-vertical { width: 0.4rem; height: 100%; }
 
 .hovering-letter {background-color: var(--offWhite); color: var(--screenBlack);}
 .hovering-letter-neighbor {background-color: var(--midGrey);}
@@ -232,13 +238,13 @@ a {
 
 YHWH {
   position: absolute;
-  z-index: 100;
+  z-index: 50;
   pointer-events: none;
 }
 
 YHWH > div {
   position: absolute;
-  border: 3px var(--offWhite) solid;
+  border: 0.4rem var(--offWhite) solid;
   box-sizing: border-box;
   box-shadow: inset 0 0 5vh 1vh #80808080;
   text-align: center;
@@ -254,14 +260,15 @@ YHWH > div > p {
   width: 90vh;
   height: 90vh;
   border-radius: 50%;
-  filter: blur(4px);
-  will-change: transform;
+  z-index: 47;
+  filter: url('#blur');
 }
 
 .inner {
   width: 80vh;
   height: 80vh;
   border-radius: 50%;
+  z-index: 49;
 }
 
 .square {
@@ -298,7 +305,7 @@ YHWH > div > p {
   animation: rotate-clockwise 30s ease-in-out infinite;
 }
 
-  .trigrams p { --trigram-distance: 32.5vh; }
+  .trigrams p { --trigram-distance: 32.5vh; filter: url('#lessBlur');}
 
   .trigrams p:nth-child(1){ transform: translate( 0, calc( 0vh - var(--trigram-distance) ) ); }
   .trigrams p:nth-child(2){ transform: translate( var(--trigram-distance) , 0)  rotate(90deg); }
@@ -326,12 +333,11 @@ p.two   { transform: translate(0,  40vh); }
   width: 30vh;
   height: 30vh;
   line-height: 30vh;
-  border: 1px var(--midGrey) solid;
+  border: 0.1rem var(--midGrey) solid;
   box-sizing: border-box;
   display: block;
   position: absolute;
-  filter: blur(2px);
-  will-change: transform;
+  filter: url('#blur');
 }
 
 .NE {position: absolute; top: -17vh; right: 1vh;}
@@ -365,10 +371,9 @@ p.two   { transform: translate(0,  40vh); }
   width: 120vh;
   height: 120vh;
   border-radius: 50%;
-  border: var(--midGrey) solid 1px;
+  border: var(--midGrey) solid 0.1rem;
   animation: zodiac-clockwise 180s linear infinite;
-  filter: blur(2px);
-  will-change: transform;
+  filter: url('#lottaBlur');
 }
 
   .zodiac p {
@@ -437,7 +442,7 @@ viewport{
     width: 55%;
     height: 45vh;
     overflow-y: auto;
-    border: 3px var(--offWhite) solid;
+    border: 0.4rem var(--offWhite) solid;
     color: var(--screenBlack);
     background-color: var(--offWhite);
     border-radius: 1%;
@@ -485,7 +490,7 @@ viewport{
     }
 
   #content, .outer, .inner, .square, .navButton {
-    border-width: 2px;
+    border-width: 0.4rem;
     font-weight: 100;
   }
 
