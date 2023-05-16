@@ -5,116 +5,116 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>𝕋𝕙𝕖 𝕂𝕣𝕪𝕡𝕥</title>
-    <link rel="stylesheet" href="index.css">       
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>       
   </head>
 
-  <body class="">
-    <div class="viewport flex center">
+  <body class="tint">
+    <div id="fade-overlay"></div>
+  <div class="viewport flex center">
     <YHWH class="flex center">
       <div class="outer flex center">
         <p class="seven">◉◎◉</p>
         <p class="two">  ◎◉◎</p>
       </div>
-      <div class="inner trigrams flex center">
-        <p class="☲">☲</p>
-        <p class="☱">☱</p>
-        <p class="☵">☵</p>
-        <p class="☳">☳</p>
-      </div>
-      <div class="square trigrams flex center">
-        <p class="☷">☷</p>
-        <p class="☰">☰</p>
-        <p class="☶">☶</p>
-        <p class="☴">☴</p>
-      </div>
+      <div class=" inner trigrams flex center"><p>☲</p><p>☱</p><p>☵</p><p>☳</p></div>
+      <div class="square trigrams flex center"><p>☷</p><p>☰</p><p>☶</p><p>☴</p></div>
     </YHWH>
-    <div class="zodiac flex center">
-        <p>♈︎</p><p>♉︎</p><p>♊︎</p><p>♋︎</p><p>♌︎</p><p>♍︎</p><p>♎︎</p><p>♏︎</p><p>♐︎</p><p>♑︎</p><p>♒︎</p><p>♓︎</p>
-      </div>
+    <div class="zodiac flex center"><p>♈︎</p><p>♉︎</p><p>♊︎</p><p>♋︎</p><p>♌︎</p><p>♍︎</p><p>♎︎</p><p>♏︎</p><p>♐︎</p><p>♑︎</p><p>♒︎</p><p>♓︎</p></div>
     <div class="cube UVGA">
-      <div class="top">
-        <p class="NE">ה</p>
-        <p class="NW">ו</p>
-        <p class="SE">ה</p>
-        <p class="SW">י</p>
-      </div>
-      <div class="right"></div>
-      <div class="bottom">
-        <p class="NE">י</p>
-        <p class="NW">נָ</p>
-        <p class="SE">דֹ</p>
-        <p class="SW">אֲ</p>
-      </div>
-      <div class="left"></div>
-      <div class="front"></div>
-      <div class="back"></div>
+      <div class="top">   <p class="NE">ה</p><p class="NW">ו</p><p class="SE">ה</p><p class="SW">י</p></div>
+      <div class="right"> </div>
+      <div class="bottom"><p class="NE">י</p><p class="NW">נָ</p><p class="SE">דֹ</p><p class="SW">אֲ</p></div>
+      <div class="left">  </div>
+      <div class="front"> </div>
+      <div class="back">  </div>
     </div>
 
-      <div id="content" class="flex center UVGA">
+    <div id="content" class="flex center UVGA">
+      <!-- Add 'class="fade-link"' to all <a> tags that need a transition for the next page. (Not for new tabs.) -->
+      <div class="navNudge"> <!-- This is fine for now but change to grid later. -->
+        <div class="navButton flex center"><p>CV<br>Place-holder</p></div>
+        <a href="good.html" class="fade-link"><div class="navButton flex center"><p>?<br>Place-holder</p></div></a>
+        <div class="navButton flex center"><p>BBS<br>Place-holder</p></div>
+      </div>
+      <div class="navNudge">
+        <a href="#poppy"><div class="navButton flex center"><p>Poppy's<br>Kult</div></a>
+        <div class="navButton flex center hidden"></div>
+        <a href="#about"><div class="navButton flex center"><p>About<br>Me (Test)</div></a>
+      </div>
+      <div>
+        <div class="navButton flex center"><p>Art<br>Place-holder</p></div>
+        <div class="navButton flex center"><p>Writ<br>Place-holder</p></div> <!-- Writ & Prose -->
+        <div class="navButton flex center"><p>Hobbies<br>Place-holder</p></div>
+      </div>
 
-        <!--<div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>-->
-        
-        <div class="navNudge"> <!-- This is fine for now but change to grid later. -->
-          <div class="navButton flex center"><p>CV<br>Place-holder</p></div>
-          <div class="navButton flex center"><p>?<br>Place-holder</p></div>
-          <div class="navButton flex center"><p>BBS<br>Place-holder</p></div>
-        </div>
-        <div class="navNudge">
-          <a href="#poppy"><div class="navButton flex center"><p>Poppy's<br>Kult</div></a>
-          <div class="navButton flex center hidden"></div>
-          <a href="#about"><div class="navButton flex center"><p>About<br>Me (Test)</div></a>
-        </div>
+      <div id="poppy" class="modal flex column center">
+        <h1 class="FSBI hl">◈ Poppy's Cult ◈</h1>
+        <p class="hl">◈ Welcome, seeker of the unknown. The enigmatic Cult of Poppy does not openly seek new members at this time. However, if you possess the determination to reach out to a known member, an opportunity to inquire about membership may present itself. Proceed with caution, for the path to enlightenment may be fraught with peril and secrecy.</p>
+        <a href="#"><p>◈ return ◈</p></a>
+      </div>
+
+      <div id="about" class="modal flex column center">
         <div>
-          <div class="navButton flex center"><p>Art<br>Place-holder</p></div>
-          <div class="navButton flex center"><p>Writ<br>Place-holder</p></div> <!-- Writ & Prose -->
-          <div class="navButton flex center"><p>Hobbies<br>Place-holder</p></div>
+          <img src="PNG/IMG_PC01.png" alt="Image of Kryptonaut">
+        
+          <p>My handle around the wired is Kryptonaut (et al), but you may call me Knaut, Krypto, or Kato.</p>
+          <p>↓ ↓ ↓ ↓ ↓</p>
+          <p>_descriptors ::</p>
+          <p>
+            #WINDOsysadmin<br>
+            #LINUXsysadmin<br>
+            #CSISundergrad<br>
+            #FICTIONwriter<br>
+            #NAVYveteranST<br>
+            #OLDNETfanatic<br>
+            #DEIST/thelema<br>
+          </p>
         </div>
-
-        <div id="poppy" class="modal flex column center">
-          <h1 class="FSBI hl">◈ Poppy's Cult ◈</h1>
-          <p class="hl">◈ Welcome, seeker of the unknown. The enigmatic Cult of Poppy does not openly seek new members at this time. However, if you possess the determination to reach out to a known member, an opportunity to inquire about membership may present itself. Proceed with caution, for the path to enlightenment may be fraught with peril and secrecy.</p>
-          <a href="#"><p>◈ return ◈</p></a>
-        </div>
-
-        <div id="about" class="modal flex column center">
-          <div>
-            <img src="PNG/IMG_PC01.png" alt="Image of Kryptonaut">
-          
-            <p>My handle around the wired is Kryptonaut (et al), but you may call me Knaut, Krypto, or Kato.</p>
-            <p>↓ ↓ ↓ ↓ ↓</p>
-            <p>_descriptors ::</p>
-            <p>
-              #WINDOsysadmin<br>
-              #LINUXsysadmin<br>
-              #CSISundergrad<br>
-              #FICTIONwriter<br>
-              #NAVYveteranST<br>
-              #OLDNETfanatic<br>
-              #DEIST/thelema<br>
-            </p>
-          </div>
-          <a href="#"><p>◈ return ◈</p></a>
-        </div>
-
+        <a href="#"><p>◈ return ◈</p></a>
       </div>
-    </div>
+
+    </div><!-- end #content -->
+  </div><!-- end <viewport> -->
   </body>
 
+<!-- Color randomizer script (JS) -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const colors = ['red', 'orange', 'yellow', 'lime', '#3BB9FF', 'white'];
+    const [color1, color2] = ['#111111', '#f3f3f3'];
+    const root = document.documentElement;
+
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const [screenBlack, offWhite] = Math.random() < 0.5 ? [color1, color2] : [color2, color1];
+
+    root.style.setProperty('--tint', randomColor);
+    root.style.setProperty('--screenBlack', screenBlack);
+    root.style.setProperty('--offWhite', offWhite);
+  });
+</script>
+
+<!-- Actually nice fade page transition effect, courtesy of our lord and savior, GPT-4 (jQuery) -->
+<script>
+  $(document).ready(function() {
+
+      $('#fade-overlay').show();  
+      $('#fade-overlay').fadeOut(500);  
+      $('a.fade-link').click(function(event) {
+          event.preventDefault();
+          newLocation = this.href;
+          $('#fade-overlay').fadeIn(250, newpage);
+      });
+  
+      function newpage() {
+          window.location = newLocation;
+      }
+  
+  });
+</script>
+
+<!--<div id="custom-cursor"><div class="line line-horizontal"></div><div class="line line-vertical"></div></div>-->
 <!--<script src="cursor.js"></script>-->
 <!--<script src="highlight.js"></script>-->
-
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters">
-  <defs>
-    <filter id="lessBlur">
-      <feGaussianBlur stdDeviation="1"></feGaussianBlur>
-    </filter>
-    <filter id="blur">
-      <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-    </filter>
-    <filter id="lottaBlur">
-      <feGaussianBlur stdDeviation="3"></feGaussianBlur>
-    </filter>
-  </defs>
-</svg>
 
 </html>

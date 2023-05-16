@@ -33,12 +33,10 @@
 /* [ Palette ] */
 
 :root {
-  /* --screenBlack:  #000000; */
-  --screenBlack:  #f3f3f3;
+  --screenBlack:  #111111;
   --midGrey:      #808080;
   --darkGrey:     #252525;
-  /* --offWhite:     #f3f3f3; */
-  --offWhite:     #000000;
+  --offWhite:     #f3f3f3;
 
   --tint: #ff0000;
 
@@ -52,12 +50,10 @@
 
 html {
   font-size: 1.1vh;
-  line-height: 1.1;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: radial-gradient(circle, var(--screenBlack) 0%, var(--darkGrey) 81%, var(--offWhite) 100%), var(--screenBlack);
+  background: radial-gradient(circle, var(--screenBlack) 0%, var(--darkGrey) 100%), var(--screenBlack);
   color: var(--offWhite);
   cursor: crosshair;
   box-sizing: border-box;
@@ -82,6 +78,21 @@ body {
   height: 100vh;
   max-width: 100vw;
   max-height: 100vh;
+  animation: flicker 0.6s infinite;
+}
+
+@keyframes flicker {
+    0%   { filter: brightness(1); }
+    10%  { filter: brightness(0.95); }
+    20%  { filter: brightness(1.05); }
+    30%  { filter: brightness(0.95); }
+    40%  { filter: brightness(1.05); }
+    50%  { filter: brightness(0.95); }
+    60%  { filter: brightness(1.05); }
+    70%  { filter: brightness(0.95); }
+    80%  { filter: brightness(1.05); }
+    90%  { filter: brightness(0.95); }
+    100% { filter: brightness(1); }
 }
 
 .tint::after {
@@ -106,8 +117,18 @@ a {
     text-transform: uppercase;
   }
 
+p { text-rendering: geometricPrecision; }
+
 
 /* [ Basic Formatting ] */
+
+#fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: none;
+  z-index: 99999;
+}
 
 #content {
   position: absolute;
@@ -209,31 +230,6 @@ a {
   .column { flex-flow: column wrap; }
   .center { justify-content: center; align-items: center; }
 
-/* [ Cursor ] */
-
-#custom-cursor {
-  position: absolute;
-  z-index: 101;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  will-change: transform;
-  /* top: 0;
-  left: 0; */
-}
-
-.line { position: absolute; background-color: var(--offWhite); will-change: transform; }
-.line-horizontal { width: 100%; height: 0.4rem; }
-.line-vertical { width: 0.4rem; height: 100%; }
-
-.hovering-letter {background-color: var(--offWhite); color: var(--screenBlack);}
-.hovering-letter-neighbor {background-color: var(--midGrey);}
-
-::selection {
-  color: var(--midGrey);
-  background: var(--offWhite);
-}
-
 /* [ Magick Circle ] */
 
 YHWH {
@@ -257,12 +253,12 @@ YHWH > div > p {
 }
 
 .outer {
+  will-change: transform, filter;
   width: 90vh;
   height: 90vh;
   border-radius: 50%;
   z-index: 47;
-  filter: url('#blur');
-  will-change: transform, filter;
+  filter: blur(0.3rem);
 }
 
 .inner {
@@ -271,6 +267,7 @@ YHWH > div > p {
   border-radius: 50%;
   z-index: 49;
   will-change: transform;
+  filter: blur(0.2rem);
 }
 
 .square {
@@ -278,6 +275,7 @@ YHWH > div > p {
   height: 56.4vh;
   transform: rotateY(0deg) rotate(45deg);
   will-change: transform;
+  filter: blur(0.1rem);
 }
 
 @keyframes rotate-counter-clockwise {
@@ -308,14 +306,14 @@ YHWH > div > p {
   animation: rotate-clockwise 30s ease-in-out infinite;
 }
 
-  .trigrams p { --trigram-distance: 32.5vh; filter: url('#lessBlur'); will-change: transform, filter;}
+  .trigrams p { --trigram-distance: 32.5vh; filter: blur(0.1rem); will-change: transform, filter; }
 
   .trigrams p:nth-child(1){ transform: translate( 0, calc( 0vh - var(--trigram-distance) ) ); }
   .trigrams p:nth-child(2){ transform: translate( var(--trigram-distance) , 0)  rotate(90deg); }
   .trigrams p:nth-child(3){ transform: translate( 0, var(--trigram-distance) )  rotate(180deg); }
   .trigrams p:nth-child(4){ transform: translate( calc( 0vh - var(--trigram-distance) ), 0) rotate(270deg); }
 
-p.seven { transform: translate(0, -40vh); }
+p.seven { transform: translate(0, -39.5vh); }
 p.two   { transform: translate(0,  40vh); }
 
 /* The Cube */
@@ -340,21 +338,21 @@ p.two   { transform: translate(0,  40vh); }
   box-sizing: border-box;
   display: block;
   position: absolute;
-  filter: url('#blur');
+  filter: blur(0.2rem);
   will-change: transform3D, transform, filter;
 }
 
-.NE {position: absolute; top: -17vh; right: 1vh;}
-.NW {position: absolute; top: -17vh; left: 1vh;}
+.NE {position: absolute; top: -17vh;    right: 1vh;}
+.NW {position: absolute; top: -17vh;    left:  1vh;}
 .SE {position: absolute; bottom: -17vh; right: 1vh;}
-.SW {position: absolute; bottom: -17vh; left: 1vh;}
+.SW {position: absolute; bottom: -17vh; left:  1vh;}
  
-.cube div.top   { transform: translate(0, -15vh) rotateX(90deg); }
-.cube div.right { transform: translate(15vh, 0)  rotateY(90deg); }  
-.cube div.bottom{ transform: translate(0, 15vh)  rotateX(-90deg);}
-.cube div.left  { transform: translate(-15vh, 0) rotateY(-90deg);}
-.cube div.back  { transform: translateZ(-15vh)   rotateX(180deg);}
-.cube div.front { transform: translateZ(15vh); }
+.cube .top   { transform: translateY(-15vh) rotateX(90deg); }
+.cube .right { transform: translateX(15vh)  rotateY(90deg); }  
+.cube .bottom{ transform: translateY(15vh)  rotateX(-90deg);}
+.cube .left  { transform: translateX(-15vh) rotateY(-90deg);}
+.cube .back  { transform: translateZ(-15vh) rotateX(180deg);}
+.cube .front { transform: translateZ(15vh); }
  
 @keyframes spin {
   0% { transform: rotateX(-45deg) rotateY(0deg); }
@@ -377,7 +375,7 @@ p.two   { transform: translate(0,  40vh); }
   border-radius: 50%;
   border: var(--midGrey) solid 0.1rem;
   animation: zodiac-clockwise 180s linear infinite;
-  filter: url('#lottaBlur');
+  filter: blur(0.4rem);
   will-change: transform, filter;
 }
 
@@ -386,25 +384,25 @@ p.two   { transform: translate(0,  40vh); }
     color: var(--midGrey);
     font-size: 4vh;
     --zodiac-spacing: 30deg;
-    --zodiac-distance: -77vh;
+    --zodiac-distance: -70vh;
   }
   
-  .zodiac p:nth-child(1) { transform: rotate( 0deg )                           translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(2) { transform: rotate(          var(--zodiac-spacing))  translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(3) { transform: rotate(calc( 2 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(4) { transform: rotate(calc( 3 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(5) { transform: rotate(calc( 4 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(6) { transform: rotate(calc( 5 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(7) { transform: rotate(calc( 6 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(8) { transform: rotate(calc( 7 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(9) { transform: rotate(calc( 8 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(10){ transform: rotate(calc( 9 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(11){ transform: rotate(calc(10 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
-  .zodiac p:nth-child(12){ transform: rotate(calc(11 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(1) { transform: rotate( 0deg )                           translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(2) { transform: rotate(          var(--zodiac-spacing))  translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(3) { transform: rotate(calc( 2 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(4) { transform: rotate(calc( 3 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(5) { transform: rotate(calc( 4 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(6) { transform: rotate(calc( 5 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(7) { transform: rotate(calc( 6 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(8) { transform: rotate(calc( 7 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(9) { transform: rotate(calc( 8 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(10){ transform: rotate(calc( 9 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(11){ transform: rotate(calc(10 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
+    .zodiac p:nth-child(12){ transform: rotate(calc(11 * var(--zodiac-spacing))) translate(0, var(--zodiac-distance)); }
 
   @keyframes zodiac-clockwise {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(180deg); }
+    0%   { transform: rotate(0deg);   }
+    50%  { transform: rotate(180deg); }
     100% { transform: rotate(360deg); }
   }
 
@@ -454,12 +452,6 @@ viewport{
     text-align: center;
   }
 
-/* [ Cursor ] */
-
-  #custom-cursor {
-    visibility: hidden;
-  }
-
 /* [ Magick Circle ] */
 
   YHWH > div > p {
@@ -500,3 +492,29 @@ viewport{
   }
 
 } 
+
+
+
+/* [ Old Custom Cursor ] */
+/* 
+#custom-cursor {
+position: absolute;
+z-index: 101;
+width: 100%;
+height: 100%;
+pointer-events: none;
+will-change: transform;
+}
+
+.line { position: absolute; background-color: var(--offWhite); will-change: transform; }
+.line-horizontal { width: 100%; height: 0.4rem; }
+.line-vertical { width: 0.4rem; height: 100%; }
+
+.hovering-letter { background-color: var(--offWhite); color: var(--screenBlack); }
+.hovering-letter-neighbor {background-color: var(--midGrey);}
+
+::selection {
+color: var(--midGrey);
+background: var(--offWhite);
+} 
+*/
