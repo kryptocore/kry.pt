@@ -262,6 +262,7 @@ YHWH > div > p {
   border-radius: 50%;
   z-index: 47;
   filter: url('#blur');
+  will-change: transform, filter;
 }
 
 .inner {
@@ -269,12 +270,14 @@ YHWH > div > p {
   height: 80vh;
   border-radius: 50%;
   z-index: 49;
+  will-change: transform;
 }
 
 .square {
   width: 56.4vh;
   height: 56.4vh;
   transform: rotateY(0deg) rotate(45deg);
+  will-change: transform;
 }
 
 @keyframes rotate-counter-clockwise {
@@ -305,7 +308,7 @@ YHWH > div > p {
   animation: rotate-clockwise 30s ease-in-out infinite;
 }
 
-  .trigrams p { --trigram-distance: 32.5vh; filter: url('#lessBlur');}
+  .trigrams p { --trigram-distance: 32.5vh; filter: url('#lessBlur'); will-change: transform, filter;}
 
   .trigrams p:nth-child(1){ transform: translate( 0, calc( 0vh - var(--trigram-distance) ) ); }
   .trigrams p:nth-child(2){ transform: translate( var(--trigram-distance) , 0)  rotate(90deg); }
@@ -338,6 +341,7 @@ p.two   { transform: translate(0,  40vh); }
   display: block;
   position: absolute;
   filter: url('#blur');
+  will-change: transform3D, transform, filter;
 }
 
 .NE {position: absolute; top: -17vh; right: 1vh;}
@@ -374,6 +378,7 @@ p.two   { transform: translate(0,  40vh); }
   border: var(--midGrey) solid 0.1rem;
   animation: zodiac-clockwise 180s linear infinite;
   filter: url('#lottaBlur');
+  will-change: transform, filter;
 }
 
   .zodiac p {
