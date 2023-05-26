@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Horizontally spinning rat</title>
+    <link rel="stylesheet" href="rat.css">
+    <style>
+      body {
+        background: #323232;
+        cursor: crosshair;
+        min-height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        display: block;
+      }
+
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        background: white;
+        text-align: center;
+        padding: 5vh;
+      }
+
+      .flex { display: flex; }
+      .center { justify-content: center; align-items: center; }
+
+      .freebird {
+        visibility: hidden;
+      }
+
+    </style>
+    <script src="../prefixfree.min.js"></script>
+</head>
+<body class="flex center">
+  <h1>CSS-Only Horizontally spinning rat</h1>
+  <div id="tridiv">
+      <div class="scene" style="-webkit-transform:rotateX(-21deg) rotateY(749deg); -moz-transform:rotateX(-21deg) rotateY(749deg); -ms-transform:rotateX(-21deg) rotateY(749deg); transform:rotateX(-21deg) rotateY(749deg); ">
+      <div class="shape prism-1 pri-1">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape cuboid-1 cub-1">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face rt"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+          <div class="face tp"></div>
+      </div>
+      <div class="shape cuboid-2 cub-2">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face rt"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+          <div class="face tp"></div>
+      </div>
+      <div class="shape pyramid-1 pyr-1">
+          <div class="face-wrapper ft">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper bk">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape cuboid-4 cub-4">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face rt"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+          <div class="face tp"></div>
+      </div>
+      <div class="shape prism-4 pri-4">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-5 pri-5">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-6 pri-6">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-7 pri-7">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-8 pri-8">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-2 pri-2">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-3 pri-3">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape prism-9 pri-9">
+          <div class="face ft"></div>
+          <div class="face bk"></div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape pyramid-2 pyr-2">
+          <div class="face-wrapper ft">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper bk">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      <div class="shape cylinder-1 cyl-1">
+          <div class="face bm"></div>
+          <div class="face tp"></div>
+          <div class="face side s0"></div>
+          <div class="face side s1"></div>
+          <div class="face side s2"></div>
+          <div class="face side s3"></div>
+          <div class="face side s4"></div>
+          <div class="face side s5"></div>
+          <div class="face side s6"></div>
+          <div class="face side s7"></div>
+          <div class="face side s8"></div>
+          <div class="face side s9"></div>
+          <div class="face side s10"></div>
+          <div class="face side s11"></div>
+          <div class="face side s12"></div>
+          <div class="face side s13"></div>
+      </div>
+      <div class="shape pyramid-3 pyr-3">
+          <div class="face-wrapper ft">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper bk">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper lt">
+          <div class="face"></div>
+          </div>
+          <div class="face-wrapper rt">
+          <div class="face"></div>
+          </div>
+          <div class="face bm"></div>
+      </div>
+      </div>
+  </div>
+  <iframe class="freebird" width="420" height="315" allow='autoplay' src="https://www.youtube.com/embed/2TSaAysdHhk?autoplay=1" frameborder="0">
+</iframe>
+</body>
+</html>
